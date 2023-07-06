@@ -61,8 +61,48 @@ def main():Unit={
 
   // price = 12?(age>9):34 // Scala doesn't support ternary operator
 
+  println("----------------------------------------------------------------")
+  //Using pattern-matching for FIZZBUZZ
+  for( i <- 1 until 100){ //until is non-inclusive
+    (i%3, i%5) match{
+      case (0, 0)=>println("fizzbuzz")
+      case (0, _)=>println("fizz")
+      case (_, 0)=>println("buzz")
+      case _ => println(i.toString)
+    }
+  }
+  val zero = 0
+  val anythingElse = 100 // this variable is NOT related to the one inside match
+  for (i <- 1 to 100) { //to is inclusive
+    (i % 3, i % 5) match { // so underscore - wildcard - can be replaced by a variable
+      case (0, 0) => println("fizzbuzz") // but the other values in tuple cannot be
+      case (0, anythingElse) => println("fizz")
+      case (anythingElse, 0) => println("buzz")
+      case anythingElse => println(i.toString)
+    }
+  }
 
+  println("----------------------------------------------------------------")
+  // You could also do the following:
+  for (i <- 1 to 50) { //to is inclusive
+    (i % 3, i % 5) match { // so underscore - wildcard - can be replaced by a variable
+      case (0, 0) => println("fizzbuzz") // but the other values in tuple cannot be
+      case (0, anythingElse) => println(s"fizz, with i%5: $anythingElse")
+      case (anythingElse, 0) => println(s"buzz, with i%3: $anythingElse")
+      case anythingElse => println(s"${i.toString} with i%3: ${anythingElse._1}, i%5: ${anythingElse._2}")
+    }
+  }
 
+  println("----------------------------------------------------------------")
+  //Modifying old code
+  for (i <- 1 until 100) { //until is non-inclusive
+    (i % 3, i % 5) match {
+      case (0, 0) => println("fizzbuzz")
+      case (0, other) => println(s"fizz, _:${other}")//this works However case (0,_) => println(s"fizz, _:${_}") DOESN'T
+      case (_, 0) => println("buzz")
+      case _ => println(i.toString)
+    }
+  }
 
 
 }
