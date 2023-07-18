@@ -236,7 +236,10 @@ def main():Unit={
   println(s"the 10th fibonacci value is ${BinetFormula_ForFibonacci(10)}") //55
   println(s"the 20th fibonacci value is ${BinetFormula_ForFibonacci(15)}") //610
 
+  square_Error(9)
+
 }
+// Linear Recursion applied to calculate Fibonacci numbers
 def fibonacciNumber(value:Int):(Int,Int)={
   if(value<2){
     (1,0)
@@ -253,3 +256,20 @@ def BinetFormula_ForFibonacci(value:Int):Int={
   val denominator = math.pow(2,value)*sqrtFive
   (numerator/denominator).toInt
 }
+
+//Experimental Code, to demonstrate the need for specifying return type
+def square_Error(x:Double)={
+  x*x //this statement is simply ignored
+  println(s"Squaring $x")
+}
+
+def square_Fixed(x:Double):Double={
+  x*x
+  println(s"Squaring $x")
+}
+/*
+* Above code gives us a compilation error
+  Found:    Unit
+  Required: Double
+    println(s"Squaring $x")
+* */
