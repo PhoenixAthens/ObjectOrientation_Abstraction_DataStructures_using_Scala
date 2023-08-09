@@ -263,10 +263,10 @@ def square_Error(x:Double)={
   println(s"Squaring $x")
 }
 
-def square_Fixed(x:Double):Double={
+/*def square_Fixed(x:Double):Double={
   x*x
   println(s"Squaring $x")
-}
+}*/
 /*
 * Above code gives us a compilation error
   Found:    Unit
